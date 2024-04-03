@@ -1,14 +1,25 @@
 import Login from "./component/login";
+import Reset from "./component/resetPassword";
 
 
 
+import { useState } from "react";
 
 function App() {
-  return (
- <>
-<h1>custom hooks</h1>
-<Login/>
- </>
+  const [form, setForm] = useState("login");
+
+  return ( 
+    <div className="App">
+      <h1>Welcome!</h1>
+      {form === "login" ? <Login /> : <Reset />}
+      <button
+        onClick={() => {
+          setForm(form === "login" ? "reset" : "login");
+        }}
+      >
+        {form === "login" ? "Forgot Password" : "Back to Login"}
+      </button>
+    </div>
   );
 }
 
